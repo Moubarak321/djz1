@@ -1,0 +1,143 @@
+{% extends 'newbase.html' %}
+
+
+
+{% block articles %}
+
+        <header id = "header" class = "vh-100 carousel slide " data-bs-ride = "carousel " style = "padding-top: 104px;">
+            
+            <div class = "container h-100 d-flex align-items-center carousel-inner">
+                <div class = "text-center carousel-item active a">
+                    <h2 class = "text-capitalize text-white">best collection</h2>
+                    <h1 class = "text-uppercase py-2 fw-bold text-white">new arrivals</h1>
+                    <a href = "#" class = "btn mt-3 text-uppercase">shop now</a>
+                </div>
+                <div class = "text-center carousel-item b">
+                    <h2 class = "text-capitalize text-white">best price & offer</h2>
+                    <h1 class = "text-uppercase py-2 fw-bold text-white">new season</h1>
+                    <a href = "#" class = "btn mt-3 text-uppercase">buy now</a>
+                </div>  
+            </div>
+
+            <button class = "carousel-control-prev" type = "button" data-bs-target="#header" data-bs-slide = "prev">
+                <span class = "carousel-control-prev-icon"></span>
+            </button>
+            <button class = "carousel-control-next" type = "button" data-bs-target="#header" data-bs-slide = "next">
+                <span class = "carousel-control-next-icon"></span>
+            </button>
+
+        </header>
+
+
+
+
+
+
+        <!-- <div class="row">
+            <div class="col-md-6">
+                <form class="card card-sm">
+                    <div class="card-body row no-gutters align-items-center">
+                        <div class="col">
+                            <input type="search" placeholder="Entrez le nom du produit que vous cherchez" name="item-name" class="form-control form-control-borderless">
+                        </div>
+                        <div class="col-auto">
+                            <button type="submit" class="btn btn-success">Recherche</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div> -->
+
+
+        <section id = "collection" class = "py-5">
+            <div class = "container">
+                <div class = "title text-center">
+                    <!-- <h2 class = "position-relative d-inline-block">New Collection</h2> -->
+
+
+
+                    <div class = "order-lg-2 nav-btns">
+                        <!-- ========================== -->
+                        <!-- <button type = "button" class = "btn position-relative">
+                            <i class = "fa fa-shopping-cart"></i>
+                            <span class = "position-absolute top-0 start-100 translate-middle badge bg-primary">5</span>
+                        </button> -->
+                        <!-- =========================== -->
+                        <form action="">
+                            <div class="input-group mt-0 search">
+                                <input  type="search" class="form-control" placeholder="Rechercher un produit..." name="item-name">
+                                <button class="btn btn-danger" type="submit" method="GET"> <i class = "fa fa-search"></i> Search</button>
+                            </div>
+                        </form>
+    
+    
+                    </div>
+
+
+
+                </div>
+
+                <div class = "row g-0">
+                    <div class = "d-flex flex-wrap justify-content-center mt-5 filter-button-group">
+                        <button type = "button" class = "btn m-2 text-dark active-filter-btn" data-filter = "*">All</button>
+                        <button type = "button" class = "btn m-2 text-dark" data-filter = ".best">Best Sellers</button>
+                        <button type = "button" class = "btn m-2 text-dark" data-filter = ".feat">Featured</button>
+                        <button type = "button" class = "btn m-2 text-dark" data-filter = ".new">New Arrival</button>
+                    </div>
+                    {% for product in products %} 
+                    
+                            <div class = "col-md-6 col-lg-4 col-xl-3 p-2 best">
+                                <div class="">
+                                        <div class = "collection-img position-relative">
+                                            <img src = "{{ product.thumbnail.url }}" class = "w-100" alt="{{ product.name }}">
+                                            <span class = "position-absolute bg-primary text-white d-flex align-items-center justify-content-center">{{product.price}}$</span>
+                                        </div>
+                                        <div class = "text-center">
+                                            <p class = "text-capitalize my-1 fw-bold">{{ product.name }}</p> 
+                                            <!-- <span class = "fw-bold">$ {{ product.price }}</span>  -->
+                                            <div><a href = "{{ product.get_absolute_url }}" class = "btn btn-primary mt-3">Voir l'article</a>
+                                                <a href="#"><button class="btn btn-success mt-3">Acheter</button></a></span>
+                                            </div>
+                                        </div>
+                                </div> 
+                            </div>
+                
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+<!-- ==================== pagination ==================== -->
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                {% if products.has_previous %}
+              <li class="">
+                <a class="page-link" href="?page= {{ products.previous_page_number }}" tabindex="-1" aria-disabled="true">Previous</a>
+              </li>
+              {% endif %}
+              
+              <li class="page-item active">
+                <a class="page-link bg-danger text-white border-white" href="?page={{ products.number }}">{{ products.number }}</a>
+            </li>
+              <!-- <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li> -->
+              {% if products.has_next %}
+              <li class="page-item">
+                <a class="page-link" href="?page= {{ products.next_page_number }}">Next</a>
+              </li>
+              {% endif %}
+            </ul>
+        </nav>
+
+
+
+       
+
+
+
+{% endblock %} 
+
+
+
+
+
+

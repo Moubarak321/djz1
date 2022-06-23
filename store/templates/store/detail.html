@@ -1,0 +1,36 @@
+{% extends 'newbase.html' %}
+
+{% block detail %}
+    <br><br><br><br><br><br>
+    <div class="container">
+        <div class="row row-content">
+
+                <div class = "col-md-5 col-lg-4 col-xl-5 p-5 offset-0 best">
+                    <div class = "collection-img position-relative">
+                        <img src = "{{ product.thumbnail.url }}" class = "w-100" alt="{{ product.name }}">
+                        <span class = "position-absolute bg-primary text-white d-flex align-items-center justify-content-center">{{ product.price}}$</span>
+                    </div>
+                </div>
+            
+                <div class="col-md-5 col-lg-4 col-xl-5 p-5 best">
+                    <div class="text-warning display-3">
+                        {{ product.name }}
+                    </div>
+                    <div class="text-danger ">
+                        Prix:  $ {{ product.price }}
+                    </div>
+                    <div class="">
+                        {{ product.description }}
+                    </div>
+                    <br>
+
+                    {% if user.is_authenticated %}
+                    <p><a href="{% url 'add-to-cart' product.slug %}"><button class="btn btn-success ">Ajouter au panier</button></a></p>
+                    {% endif %}
+                </div>
+
+        </div>
+    </div>
+<br><br><br><br>
+{% endblock %}
+

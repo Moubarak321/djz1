@@ -1,0 +1,62 @@
+{% extends 'newbase.html' %}
+<br><br><br><br><br>
+
+{% block articles %}
+<div><br><br><br><br></div>
+
+
+<!-- <div class = "collection-list mt-4 row gx-0 gy-3"> -->
+    {% for order in orders %}
+        <!-- <div class = "collection-list mt-2 row gx-0 gy-5">
+            <div class = "col-md-6 col-lg-4 col-xl-3 p-5 best  offset-1">
+                <div class="">
+                        <div class = "collection-img position-relative">
+                            <img src = "{{ order.product.thumbnail.url }}" class = "w-100" alt="{{ order.product.name }}">
+                            <span class = "position-absolute bg-primary text-white d-flex align-items-center justify-content-center">{{order.product.price}}$</span>
+                        </div>
+                        <div class = "text-center">
+                            <p class = "text-capitalize my-0 fw-bold">{{ order.product.name }} </p> 
+                            <p class="my-1 bg-warning">{{ order.quantity }} dans le panier</p>
+                            
+                            
+                        </div>
+                </div> 
+            </div>
+        </div> -->
+        <div class = "col-md-6 col-lg-4 col-xl-3 p-4 best">
+            <div class="">
+                    <div class = "collection-img position-relative">
+                        <img src = "{{ order.product.thumbnail.url }}" class = "w-100" alt="{{ order.product.name }}">
+                        <span class = "position-absolute bg-primary text-white d-flex align-items-center justify-content-center">{{order.product.price}}$</span>
+                    </div>
+                    <div class = "text-center">
+                        <p class = "text-capitalize my-1 fw-bold">{{ order.product.name }}</p> 
+                        <p class="my-1 bg-warning">{{ order.quantity }} dans le panier</p>
+                    </div>
+            </div> 
+        </div>
+
+    {% endfor %}
+    <p class="text-center"><a href="{% url 'delete-cart' %}"><button class="btn btn-success ">Supprimer mon panier</button></a></p>
+{% endblock %}
+</div>
+
+
+
+
+
+
+
+
+<!-- <div class = "col-md-6 col-lg-4 col-xl-3 p-2 best">
+    <div class="">
+            <div class = "collection-img position-relative">
+                <img src = "{{ order.product.thumbnail.url }}" class = "w-100" alt="{{ order.product.name }}">
+                <span class = "position-absolute bg-primary text-white d-flex align-items-center justify-content-center">{{product.price}}$</span>
+            </div>
+            <div class = "text-center">
+                <p class = "text-capitalize my-1 fw-bold">{{ order.product.name }}</p> 
+                <p class="my-1 bg-warning">{{ order.quantity }} dans le panier</p>
+            </div>
+    </div> 
+</div> -->
