@@ -102,6 +102,37 @@ body{
 
 
 
+/*===========
+       add and retire buttons
+======================*/
+#ajoutred{
+    border: 5px solid black
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -219,3 +250,4 @@ footer a:hover{
         border-bottom: none;
     }
 }
+

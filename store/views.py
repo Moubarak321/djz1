@@ -17,7 +17,7 @@ def index(request):
         products = Product.objects.filter(name__icontains=item_name )
     
     #============== paginator ============== 
-    paginator = Paginator(products, 2)
+    paginator = Paginator(products, 8)
     page = request.GET.get('page')
     products = paginator.get_page(page)
     
